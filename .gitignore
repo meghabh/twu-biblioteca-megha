@@ -1,0 +1,7 @@
+workspace.xml
+/out
+/build
+*.DS_Store
+.gradle
+.build
+

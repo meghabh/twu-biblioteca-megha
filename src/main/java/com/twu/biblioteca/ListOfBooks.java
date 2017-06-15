@@ -10,9 +10,9 @@ public class ListOfBooks {
 
     }
     void listBooks() {
-        books.add(new Book("Head First Java"));
-        books.add(new Book("Native Son"));
-        books.add(new Book("Animal Farm"));
+        books.add(new Book("Head First Java","Kathy Sierra,Bert Bates",2015));
+        books.add(new Book("Native Son","Richard Wrigh",1940));
+        books.add(new Book("Animal Farm","George Orwell",1945));
     }
     ArrayList<Book> getListOfBooks(){
         return books;

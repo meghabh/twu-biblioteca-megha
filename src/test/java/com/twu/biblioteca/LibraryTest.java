@@ -23,9 +23,9 @@ public class LibraryTest {
     public void shouldDisplayListOfBooksWithDetails() {
         TestOutputWriter outputWriter = new TestOutputWriter(null);
         ArrayList<Book> expectedBookList = new ArrayList<Book>();
-        expectedBookList.add(new Book("Head First Java"));
-        expectedBookList.add(new Book("Native Son"));
-        expectedBookList.add(new Book("Animal Farm"));
+        expectedBookList.add(new Book( "Head First Java","Kathy Sierra,Bert Bates", 2015));
+        expectedBookList.add(new Book("Native Son","Richard Wrigh", 1940));
+        expectedBookList.add(new Book("Animal Farm","George Orwell", 1945));
         Library library = new Library(outputWriter);
         assertEquals(expectedBookList, library.getListOfBooks());
     }

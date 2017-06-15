@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BibliotecaApp {
 
-    public static void main(String[] args) {
+    public void startLibrary() {
         Library library=new Library();
         ArrayList<Book> books=new ArrayList<Book>();
         String welcomeMessage=library.getWelcomeMessage();

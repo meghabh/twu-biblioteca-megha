@@ -20,7 +20,6 @@ public class Library {
         books.add(new Book("Head First Java"));
         books.add(new Book("NATIVE SON"));
         books.add(new Book("ANIMAL FARM"));
-        books.add(new Book("HEART OF DARKNESS"));
     }
     public ArrayList<Book> getListOfBooks() {
         return books;

@@ -9,10 +9,11 @@ public class Book {
     Book(String title) {
         this.title = title;
     }
+
     @Override
     public boolean equals(Object obj) {
         Book book = (Book) obj;
-        if (this.title == book.title )
+        if (this.title == book.title)
             return true;
         return false;
     }

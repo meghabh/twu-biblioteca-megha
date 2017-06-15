@@ -36,9 +36,11 @@ public class LibraryTest {
                 BufferedWriter(new OutputStreamWriter(System.out)));
         ArrayList<String> expectedBookList = new ArrayList<String>();
         expectedBookList.add("WELCOME");
-        expectedBookList.add("Head First Java");
-        expectedBookList.add("Native Son");
-        expectedBookList.add("Animal Farm");
+        expectedBookList.add(new Book( "Head First Java","Kathy Sierra,Bert" +
+                " Bates", 2015).toString());
+        expectedBookList.add(new Book("Native Son","Richard Wrigh", 1940).toString());
+        expectedBookList.add(new Book("Animal Farm","George Orwell", 1945)
+                .toString());
         Library library = new Library(outputWriter);
         library.startLibrary();
         assertEquals(expectedBookList, outputWriter.getOutputs());

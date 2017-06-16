@@ -2,20 +2,22 @@ package com.twu.biblioteca;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TestOutputWriter extends ConsoleOutputWriter {
-    ArrayList<String> outputs;
+    List<String> outputs;
 
     public TestOutputWriter(BufferedWriter bufferedWriter) {
         super(bufferedWriter);
         outputs = new ArrayList<String>();
+
     }
 
     public void write(String output) {
         outputs.add(output);
     }
 
-    public ArrayList<String> getOutputs() {
+    public List<String> getOutputs() {
         return outputs;
     }
 

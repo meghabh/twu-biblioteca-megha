@@ -1,11 +1,12 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Library {
     ConsoleOutputWriter consoleOutputWriter;
     private final String WELCOME_MESSAGE = "WELCOME";
-    ArrayList<Book> books;
+    List<Book> books;
     ListOfBooks listOfBooks;
 
 
@@ -30,7 +31,7 @@ public class Library {
         return WELCOME_MESSAGE;
     }
 
-    public ArrayList<Book> getListOfBooks() {
+    public List<Book> getListOfBooks() {
         return listOfBooks.getListOfBooks();
     }
 

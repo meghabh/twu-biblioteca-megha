@@ -1,9 +1,10 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ListOfBooks {
-    ArrayList<Book> books;
+    List<Book> books;
     ListOfBooks(){
         books=new ArrayList<>();
         listBooks();
@@ -14,7 +15,7 @@ public class ListOfBooks {
         books.add(new Book("Native Son","Richard Wrigh",1940));
         books.add(new Book("Animal Farm","George Orwell",1945));
     }
-    ArrayList<Book> getListOfBooks(){
+    List<Book> getListOfBooks(){
         return books;
     }
 }

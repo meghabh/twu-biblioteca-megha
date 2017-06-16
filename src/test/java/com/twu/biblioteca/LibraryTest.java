@@ -1,11 +1,11 @@
 package com.twu.biblioteca;
 
-
 import org.junit.Test;
 
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,7 +22,7 @@ public class LibraryTest {
     @Test
     public void shouldDisplayListOfBooksWithDetails() {
         TestOutputWriter outputWriter = new TestOutputWriter(null);
-        ArrayList<Book> expectedBookList = new ArrayList<Book>();
+        List<Book> expectedBookList = new ArrayList<Book>();
         expectedBookList.add(new Book( "Head First Java","Kathy Sierra,Bert Bates", 2015));
         expectedBookList.add(new Book("Native Son","Richard Wrigh", 1940));
         expectedBookList.add(new Book("Animal Farm","George Orwell", 1945));
@@ -34,7 +34,7 @@ public class LibraryTest {
     public void shouldDisplayMenuItemsOnScreen() {
         TestOutputWriter outputWriter = new TestOutputWriter(new
                 BufferedWriter(new OutputStreamWriter(System.out)));
-        ArrayList<String> expectedBookList = new ArrayList<String>();
+        List<String> expectedBookList = new ArrayList<String>();
         expectedBookList.add("WELCOME");
         expectedBookList.add(new Book( "Head First Java","Kathy Sierra,Bert" +
                 " Bates", 2015).toString());

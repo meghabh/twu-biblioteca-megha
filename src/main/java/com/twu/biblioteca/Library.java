@@ -21,7 +21,7 @@ public class Library {
     }
 
     void displayListOfBooks() {
-        for (Book book : bookRepository.books) {
+        for (Book book : bookRepository) {
             consoleOutputWriter.write(book.toString()+"\n" );
         }
     }

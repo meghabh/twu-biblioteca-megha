@@ -1,10 +1,12 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class BookRepository {
-    List<Book> books;
+public class BookRepository implements Iterable<Book> {
+    private List<Book> books;
 
     BookRepository() {
         books = new ArrayList<>();
@@ -18,5 +20,8 @@ public class BookRepository {
         books.add(new Book("Animal Farm", "George Orwell", 1945));
     }
 
-
+    @Override
+    public Iterator<Book> iterator() {
+        return Collections.unmodifiableList(books).iterator();
+    }
 }

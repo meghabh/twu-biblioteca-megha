@@ -1,5 +1,6 @@
 package com.twu.biblioteca;
 
+import com.twu.io.ConsoleOutputWriter;
 import org.junit.Test;
 
 import java.io.BufferedWriter;
@@ -20,3 +21,4 @@ public class ConsoleOutputWriterTest {
         assertEquals(expectedOutput, stringWriter.toString());
     }
 }
+

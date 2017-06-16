@@ -1,8 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.io.ConsoleOutputWriter;
+
 import java.io.BufferedWriter;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
 
 public class Biblioteca {
     public static void main(String[] args) {

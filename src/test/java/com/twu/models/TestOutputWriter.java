@@ -1,4 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.models;
+
+import com.twu.io.ConsoleOutputWriter;
 
 import java.io.BufferedWriter;
 import java.util.ArrayList;
@@ -17,7 +19,7 @@ public class TestOutputWriter extends ConsoleOutputWriter {
         outputs.add(output);
     }
 
-    public List<String> getOutputs() {
+    public List<String> getOutputsMessages() {
         return outputs;
     }
 

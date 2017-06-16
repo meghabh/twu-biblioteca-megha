@@ -1,46 +1,19 @@
-buildscript {
-    repositories {
-        jcenter()
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE"
-        classpath 'org.springframework:springloaded:1.2.6.RELEASE'
-
-    }
-}
-plugins {
-    id 'org.springframework.boot' version '1.5.3.RELEASE'
-}
-
 apply plugin: 'java'
 apply plugin: 'application'
-apply plugin: 'war'
-apply plugin: 'idea'
 
-jar {
-    manifest {
-        attributes(
-                "Main-Class": "com/twu/biblioteca/BibliotecaApp.java"
-        )
-    }
-}
 repositories {
     jcenter()
-    mavenCentral()
-}
-idea {
-    module {
-        inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/main/")
-    }
-}
-dependencies {
-    testCompile 'junit:junit:4.12'
-    compile("org.springframework.boot:spring-boot-starter-web")
-    compile("org.thymeleaf:thymeleaf-spring4")
-    compile("nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
 }
 
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+mainClassName = 'com.twu.biblioteca.Biblioteca'
+
+jar{
+    manifest {
+        attributes 'Implementation-Title': 'biblioteca',
+                'Main-Class': mainClassName
+    }
+}

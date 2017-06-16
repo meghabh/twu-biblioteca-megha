@@ -1,40 +1,30 @@
 package com.twu.biblioteca;
 
-import java.util.ArrayList;
+import com.twu.io.ConsoleOutputWriter;
+
 import java.util.List;
 
 public class Library {
     ConsoleOutputWriter consoleOutputWriter;
-    private final String WELCOME_MESSAGE = "WELCOME";
-    List<Book> books;
-    ListOfBooks listOfBooks;
+    private final String WELCOME_MESSAGE = "Welcome to library";
+    BookRepository bookRepository;
 
-
-    public Library(ConsoleOutputWriter consoleOutputWriter) {
+    Library(ConsoleOutputWriter consoleOutputWriter) {
         this.consoleOutputWriter = consoleOutputWriter;
-        listOfBooks = new ListOfBooks();
+        bookRepository = new BookRepository();
+
     }
 
     void displayWelcomeMessage() {
-        consoleOutputWriter.write(WELCOME_MESSAGE);
+        consoleOutputWriter.write(WELCOME_MESSAGE+"\n");
 
     }
 
     void displayListOfBooks() {
-        for (Book book : listOfBooks.getListOfBooks()) {
-            consoleOutputWriter.write(book.toString());
+        for (Book book : bookRepository.books) {
+            consoleOutputWriter.write(book.toString()+"\n" );
         }
-
     }
-
-    String getWelcomeMessage() {
-        return WELCOME_MESSAGE;
-    }
-
-    public List<Book> getListOfBooks() {
-        return listOfBooks.getListOfBooks();
-    }
-
 
     void startLibrary() {
         displayWelcomeMessage();

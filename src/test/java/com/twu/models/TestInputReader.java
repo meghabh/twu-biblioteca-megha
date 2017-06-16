@@ -1,11 +1,10 @@
-package com.twu.biblioteca;
+package com.twu.models;
 
-
+import com.twu.io.ConsoleInputReader;
 import java.io.BufferedReader;
 
 public class TestInputReader extends ConsoleInputReader{
 
-    String input;
     public TestInputReader(BufferedReader bufferedReader) {
         super(bufferedReader);
     }

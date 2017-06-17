@@ -11,6 +11,7 @@ public class ConsoleOutputWriter implements OutputWriter{
         this.bufferedWriter = bufferedWriter;
     }
 
+
     public void write(String output) {
         try {
             bufferedWriter.write(output.toString());

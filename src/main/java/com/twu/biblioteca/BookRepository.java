@@ -14,7 +14,7 @@ public class BookRepository implements Iterable<Book> {
 
     }
 
-    void addBooks() {
+    private void addBooks() {
         books.add(new Book("Head First Java", "Kathy Sierra,Bert Bates", 2015));
         books.add(new Book("Native Son", "Richard Wrigh", 1940));
         books.add(new Book("Animal Farm", "George Orwell", 1945));

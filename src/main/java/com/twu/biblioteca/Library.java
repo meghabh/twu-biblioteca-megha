@@ -20,41 +20,33 @@ public class Library {
         this.consoleOutputWriter = consoleOutputWriter;
         this.consoleInputReader = consoleInputReader;
         bookRepository = new BookRepository();
-        menu = new Menu();
-        options = menu.getMenuOptions();
+        menu = new Menu(consoleOutputWriter);
     }
 
-    void displayWelcomeMessage() {
+    private void displayWelcomeMessage() {
         consoleOutputWriter.write(WELCOME_MESSAGE + "\n");
 
     }
 
-    public void displayMenuOptions() {
-        MenuOptions menuOption;
-        for (Map.Entry<String, MenuOptions> option : options.entrySet()) {
-            menuOption = option.getValue();
-            consoleOutputWriter.write(option.getKey() + " " + menuOption.toString() + "\n");
-        }
-    }
 
-    void displayMenu() {
+
+    private void displayMenu() {
         String userInput;
         do {
-            displayMenuOptions();
+            menu.displayMenuOptions();
             userInput = consoleInputReader.read();
             executeMenuOptionForUserInput(userInput);
         } while (!userInput.equals("2"));
     }
 
-    void executeMenuOptionForUserInput(String userInput) {
+    private void executeMenuOptionForUserInput(String input) {
         MenuOptions menuOption;
-        if (options.containsKey(userInput)) {
-            menuOption = options.get(userInput);
+            menuOption = menu.getMenuOption(input);
             List<String> outputMessages = menuOption.performAction(bookRepository);
             for (String output : outputMessages)
                 consoleOutputWriter.write(output);
         }
-    }
+
 
     void startLibrary() {
         displayWelcomeMessage();

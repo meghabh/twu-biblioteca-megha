@@ -5,9 +5,7 @@ import com.twu.models.TestOutputWriter;
 import org.junit.Test;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 
@@ -29,14 +27,12 @@ public class LibraryTest {
     }
 
     @Test
-    public void shouldKeepOnDisplayingMenuUntilUserchoosesToQuit() {
+    public void shouldDisplayListOfBooksWhenUserChoosesListBooks() {
         ArrayList<String> expectedOutputMessages = new ArrayList<>();
-        TestOutputWriter outputWriter = new TestOutputWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
-        TestInputReader inputReader = new TestInputReader("1\n1\n2");
+        TestOutputWriter outputWriter = new TestOutputWriter();
+        TestInputReader inputReader = new TestInputReader("1\n2");
         Library library = new Library(inputReader, outputWriter);
         expectedOutputMessages.add("Welcome to library\n");
-        expectedOutputMessages.addAll(getExpectedMenuOptions());
-        expectedOutputMessages.addAll(getExpectedListOfBooks());
         expectedOutputMessages.addAll(getExpectedMenuOptions());
         expectedOutputMessages.addAll(getExpectedListOfBooks());
         expectedOutputMessages.addAll(getExpectedMenuOptions());
@@ -48,5 +44,22 @@ public class LibraryTest {
 
     }
 
+    @Test
+    public void shouldNotifyUserForInvalidOption() {
+        ArrayList<String> expectedOutputMessages = new ArrayList<>();
+        TestOutputWriter outputWriter = new TestOutputWriter();
+        TestInputReader inputReader = new TestInputReader("3\n2");
+        Library library = new Library(inputReader, outputWriter);
+        expectedOutputMessages.add("Welcome to library\n");
+        expectedOutputMessages.addAll(getExpectedMenuOptions());
+        expectedOutputMessages.add("Select a valid option\n");
+        expectedOutputMessages.addAll(getExpectedMenuOptions());
+        expectedOutputMessages.add("Thank you");
+
+        library.startLibrary();
+
+        assertEquals(expectedOutputMessages, outputWriter.getOutputsMessages());
+    }
 
 }
+

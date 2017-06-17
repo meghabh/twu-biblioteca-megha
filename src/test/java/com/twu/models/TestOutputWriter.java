@@ -9,10 +9,9 @@ import java.util.List;
 public class TestOutputWriter extends ConsoleOutputWriter {
     List<String> outputs;
 
-    public TestOutputWriter(BufferedWriter bufferedWriter) {
-        super(bufferedWriter);
+    public TestOutputWriter() {
+        super(null);
         outputs = new ArrayList<String>();
-
     }
 
     public void write(String output) {

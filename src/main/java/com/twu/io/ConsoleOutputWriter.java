@@ -1,9 +1,11 @@
 package com.twu.io;
 
+import com.twu.biblioteca.Output;
+
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class ConsoleOutputWriter implements OutputWriter{
+public class ConsoleOutputWriter implements OutputWriter {
 
     BufferedWriter bufferedWriter;
 
@@ -12,7 +14,7 @@ public class ConsoleOutputWriter implements OutputWriter{
     }
 
 
-    public void write(String output) {
+    public void write(Output output) {
         try {
             bufferedWriter.write(output.toString());
             bufferedWriter.flush();

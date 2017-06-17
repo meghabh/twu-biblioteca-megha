@@ -1,26 +1,24 @@
 package com.twu.models;
 
-import com.twu.io.ConsoleOutputWriter;
+import com.twu.biblioteca.Output;
+import com.twu.io.OutputWriter;
 
-import java.io.BufferedWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestOutputWriter extends ConsoleOutputWriter {
-    List<String> outputs;
+public class TestOutputWriter implements OutputWriter {
+    List<Output> outputMessages;
 
     public TestOutputWriter() {
-        super(null);
-        outputs = new ArrayList<String>();
+        outputMessages = new ArrayList<>();
     }
 
-    public void write(String output) {
-        outputs.add(output);
+    @Override
+    public void write(Output output) {
+        outputMessages.add(output);
+
     }
-
-    public List<String> getOutputsMessages() {
-        return outputs;
+    public List<Output> getOutput(){
+        return outputMessages;
     }
-
-
 }

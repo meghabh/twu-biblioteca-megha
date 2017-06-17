@@ -1,9 +1,9 @@
 package com.twu.menuoptions;
 
 import com.twu.biblioteca.BookRepository;
+import com.twu.biblioteca.Output;
 
-import java.util.List;
 
 public interface MenuOptions {
-    List<String> performAction(BookRepository bookRepository);
+    Output performAction(BookRepository bookRepository);
 }

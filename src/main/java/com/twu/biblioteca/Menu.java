@@ -7,7 +7,9 @@ import com.twu.menuoptions.ListBook;
 import com.twu.menuoptions.MenuOptions;
 import com.twu.menuoptions.Quit;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Menu {
@@ -31,9 +33,11 @@ public class Menu {
 
     void displayMenuOptions() {
         MenuOptions menuOption;
+        List<String> menuOptionsList = new ArrayList<>();
         for (Map.Entry<String, MenuOptions> option : menuOptions.entrySet()) {
             menuOption = option.getValue();
-            consoleOutputWriter.write(option.getKey() + " " + menuOption.toString() + "\n");
+            menuOptionsList.add(option.getKey() + " " + menuOption.toString() + "\n");
         }
+        consoleOutputWriter.write(new Output(menuOptionsList));
     }
 }

@@ -1,18 +1,16 @@
 package com.twu.menuoptions;
 
 import com.twu.biblioteca.BookRepository;
+import com.twu.biblioteca.Output;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class InvalidMenuOption implements MenuOptions{
 
 
     @Override
-    public List<String> performAction(BookRepository bookRepository) {
-        List<String> message = new ArrayList<>();
-        message.add("Select a valid option\n");
-        return message;
+    public Output performAction(BookRepository bookRepository) {
+        String message="Select a valid option\n";
+        return new Output(message);
 
     }
 }

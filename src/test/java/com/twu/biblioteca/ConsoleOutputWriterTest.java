@@ -17,7 +17,7 @@ public class ConsoleOutputWriterTest {
         StringWriter stringWriter = new StringWriter();
         ConsoleOutputWriter outputWriter = new ConsoleOutputWriter(new
                 BufferedWriter(stringWriter));
-        outputWriter.write(input);
+        outputWriter.write(new Output(input));
         assertEquals(expectedOutput, stringWriter.toString());
     }
 }

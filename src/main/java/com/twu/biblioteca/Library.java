@@ -24,11 +24,9 @@ public class Library {
     }
 
     private void displayWelcomeMessage() {
-        consoleOutputWriter.write(WELCOME_MESSAGE + "\n");
+        consoleOutputWriter.write(new Output(WELCOME_MESSAGE + "\n"));
 
     }
-
-
 
     private void displayMenu() {
         String userInput;
@@ -42,9 +40,8 @@ public class Library {
     private void executeMenuOptionForUserInput(String input) {
         MenuOptions menuOption;
             menuOption = menu.getMenuOption(input);
-            List<String> outputMessages = menuOption.performAction(bookRepository);
-            for (String output : outputMessages)
-                consoleOutputWriter.write(output);
+            Output output = menuOption.performAction(bookRepository);
+        consoleOutputWriter.write(output);
         }
 
 

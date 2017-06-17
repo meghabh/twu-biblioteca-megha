@@ -5,7 +5,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class ConsoleInputReader {
+public class ConsoleInputReader implements InputReader {
 
     BufferedReader bufferedReader;
 
@@ -15,8 +15,8 @@ public class ConsoleInputReader {
     public String read() {
         try {
             return bufferedReader.readLine();
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (IOException exception) {
+            exception.printStackTrace();
         }
         return null;
     }

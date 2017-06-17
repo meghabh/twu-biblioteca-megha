@@ -3,7 +3,7 @@ package com.twu.io;
 import java.io.BufferedWriter;
 import java.io.IOException;
 
-public class ConsoleOutputWriter {
+public class ConsoleOutputWriter implements OutputWriter{
 
     BufferedWriter bufferedWriter;
 

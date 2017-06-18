@@ -19,8 +19,9 @@ public class ListBookTest {
         expectedListOfBooks.add("Animal Farm          | George Orwell             | 1945\n");
         return new Output(expectedListOfBooks);
     }
+
     @Test
-    public void shouldDisplayListOfBooksWhenUserChoosesListBooks(){
+    public void shouldDisplayListOfBooksWhenUserChoosesListBooks() {
         ArrayList<Output> expectedOutputMessages = new ArrayList<>();
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("1");
@@ -32,11 +33,12 @@ public class ListBookTest {
 
         assertEquals(expectedOutputMessages, outputWriter.getOutput());
     }
+
     @Test
-    public void shouldGetCheckoutMenuOption(){
-        String expectedOption="ListBooks";
+    public void shouldGetListBooksMenuOption() {
+        String expectedOption = "ListBooks";
         ListBook listBook = new ListBook();
 
-        assertEquals(expectedOption,listBook.getOption());
+        assertEquals(expectedOption, listBook.getOption());
     }
 }

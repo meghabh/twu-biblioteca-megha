@@ -18,7 +18,7 @@ public class QuitOptionTest {
         TestOutputWriter outputWriter = new TestOutputWriter();
         TestInputReader inputReader = new TestInputReader("3");
         BookRepository bookRepository = new BookRepository();
-        Quit quitOption=new Quit();
+        Quit quitOption = new Quit();
         expectedOutputMessages.add(new Output("Thank you"));
 
         outputWriter.write(quitOption.performAction(bookRepository, inputReader));
@@ -26,12 +26,13 @@ public class QuitOptionTest {
         assertEquals(expectedOutputMessages, outputWriter.getOutput());
 
     }
-    @Test
-    public void shouldGetCheckoutMenuOption(){
-        String expectedOption="Quit";
-        Quit quitOption=new Quit();
 
-        assertEquals(expectedOption,quitOption.getOption());
+    @Test
+    public void shouldGetQuitMenuOption() {
+        String expectedOption = "Quit";
+        Quit quitOption = new Quit();
+
+        assertEquals(expectedOption, quitOption.getOption());
     }
 
 }

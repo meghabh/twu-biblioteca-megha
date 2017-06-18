@@ -18,7 +18,8 @@ public class TestOutputWriter implements OutputWriter {
         outputMessages.add(output);
 
     }
-    public List<Output> getOutput(){
+
+    public List<Output> getOutput() {
         return outputMessages;
     }
 }

@@ -22,7 +22,8 @@ public class Menu {
     private void options() {
         menuOptions.put("1", new ListBook());
         menuOptions.put("2", new CheckOutBook());
-        menuOptions.put("3", new Quit());
+        menuOptions.put("3", new ReturnBook());
+        menuOptions.put("4", new Quit());
     }
 
     public MenuOptions getMenuOption(String userInput) {

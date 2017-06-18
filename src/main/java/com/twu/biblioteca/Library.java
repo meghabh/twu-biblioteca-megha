@@ -33,7 +33,7 @@ public class Library {
             menu.displayMenuOptions();
             userInput = consoleInputReader.read();
             executeMenuOptionForUserInput(userInput);
-        } while (!userInput.equals("3"));
+        } while (!userInput.equals("4"));
     }
 
     private void executeMenuOptionForUserInput(String input) {

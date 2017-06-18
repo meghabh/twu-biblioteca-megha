@@ -29,24 +29,39 @@ public class BookRepository {
 
     }
 
-    public String checkout(String userInput) {
+    public String checkoutBook(String userInput) {
         String successfulCheckoutMessage = "Thank you! Enjoy the book\n";
         String unSuccessfulCheckoutMessage = "book is not available\n";
         availableBooks = getAvailableBooks();
         for (Book book : availableBooks) {
             if (book.title.equals(userInput)) {
-                setAvailabilityStatus(book);
+                setAvailabilityStatus(book, BookStatus.NOTAVAILABLE);
                 return successfulCheckoutMessage;
             }
         }
         return unSuccessfulCheckoutMessage;
     }
 
-    public void setAvailabilityStatus(Book book) {
+    public void setAvailabilityStatus(Book book, BookStatus bookStatus) {
         for (Map.Entry<Book, BookStatus> option : books.entrySet()) {
             if (option.getKey() == book) {
-                option.setValue(BookStatus.NOTAVAILABLE);
+                option.setValue(bookStatus);
             }
         }
+    }
+
+    public String returnBook(String userInput) {
+        String successfulReturnMessage = "Thank you for returning the book\n";
+        String unSuccessfulReturnMessage = "That is not a valid book to return\n";
+        availableBooks = getAvailableBooks();
+        for (Map.Entry<Book, BookStatus> option : books.entrySet()) {
+            Book book = option.getKey();
+            if (book.title.equals(userInput) && option.getValue() == BookStatus.NOTAVAILABLE) {
+                setAvailabilityStatus(book, BookStatus.AVAILABLE);
+                return successfulReturnMessage;
+            }
+        }
+        return unSuccessfulReturnMessage;
+
     }
 }

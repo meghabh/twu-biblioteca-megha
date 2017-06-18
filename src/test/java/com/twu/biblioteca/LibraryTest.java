@@ -16,7 +16,8 @@ public class LibraryTest {
         ArrayList<String> expectedOutputMessages = new ArrayList<>();
         expectedOutputMessages.add("1 ListBooks\n");
         expectedOutputMessages.add("2 Checkout Book\n");
-        expectedOutputMessages.add("3 Quit\n");
+        expectedOutputMessages.add("3 Return Book\n");
+        expectedOutputMessages.add("4 Quit\n");
         return new Output(expectedOutputMessages);
     }
 
@@ -40,7 +41,7 @@ public class LibraryTest {
     public void shouldDisplayListOfBooksWhenUserChoosesListBooks() {
         List<Output> expectedOutputMessages = new ArrayList<>();
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader = new TestInputReader("1\n3");
+        TestInputReader inputReader = new TestInputReader("1\n4");
         Library library = new Library(inputReader, outputWriter);
         expectedOutputMessages.add(getWelcomeMessageOutput());
         expectedOutputMessages.add(getExpectedMenuOptions());

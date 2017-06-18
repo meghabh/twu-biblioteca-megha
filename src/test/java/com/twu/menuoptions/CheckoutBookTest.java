@@ -27,6 +27,7 @@ public class CheckoutBookTest {
         assertEquals(expectedOutputMessages, outputWriter.getOutput());
 
     }
+
     @Test
     public void shouldNotifyCustomerForUnSuccessfulCheckout() {
         ArrayList<Output> expectedOutputMessages = new ArrayList<>();
@@ -41,11 +42,12 @@ public class CheckoutBookTest {
         assertEquals(expectedOutputMessages, outputWriter.getOutput());
 
     }
-   @Test
-    public void shouldGetCheckoutMenuOption(){
-        String expectedOption="Checkout Book";
-        CheckOutBook checkOutBook=new CheckOutBook();
 
-        assertEquals(expectedOption,checkOutBook.getOption());
-   }
+    @Test
+    public void shouldGetCheckoutMenuOption() {
+        String expectedOption = "Checkout Book";
+        CheckOutBook checkOutBook = new CheckOutBook();
+
+        assertEquals(expectedOption, checkOutBook.getOption());
+    }
 }

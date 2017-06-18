@@ -5,18 +5,19 @@ import com.twu.biblioteca.Output;
 import com.twu.io.InputReader;
 
 
-public class InvalidMenuOption implements MenuOptions {
-
-
+public class CheckOutBook implements MenuOptions {
     @Override
     public Output performAction(BookRepository bookRepository, InputReader consoleInputReader) {
-        String message = "Select a valid option\n";
+        String userInput;
+        String message;
+        userInput = consoleInputReader.read();
+        message = bookRepository.checkout(userInput);
         return new Output(message);
-
     }
 
     @Override
     public String getOption() {
-        return null;
+        return "Checkout Book";
     }
+
 }

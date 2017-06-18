@@ -15,7 +15,8 @@ public class LibraryTest {
     private Output getExpectedMenuOptions() {
         ArrayList<String> expectedOutputMessages = new ArrayList<>();
         expectedOutputMessages.add("1 ListBooks\n");
-        expectedOutputMessages.add("2 Quit\n");
+        expectedOutputMessages.add("2 Checkout Book\n");
+        expectedOutputMessages.add("3 Quit\n");
         return new Output(expectedOutputMessages);
     }
 
@@ -27,11 +28,19 @@ public class LibraryTest {
         return new Output(expectedListOfBooks);
     }
 
+    private Output getWelcomeMessageOutput() {
+        return new Output("Welcome to library\n");
+    }
+
+    private Output getQuitMenuOptionOutput() {
+        return new Output("Thank you");
+    }
+
     @Test
     public void shouldDisplayListOfBooksWhenUserChoosesListBooks() {
         List<Output> expectedOutputMessages = new ArrayList<>();
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader = new TestInputReader("1\n2");
+        TestInputReader inputReader = new TestInputReader("1\n3");
         Library library = new Library(inputReader, outputWriter);
         expectedOutputMessages.add(getWelcomeMessageOutput());
         expectedOutputMessages.add(getExpectedMenuOptions());
@@ -41,37 +50,7 @@ public class LibraryTest {
 
         library.startLibrary();
 
-        assertEquals(expectedOutputMessages,outputWriter.getOutput());
-
-    }
-
-    private Output getWelcomeMessageOutput() {
-        return new Output("Welcome to library\n");
-    }
-
-    @Test
-    public void shouldNotifyUserForInvalidOption() {
-        ArrayList<Output> expectedOutputMessages = new ArrayList<>();
-        TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader = new TestInputReader("3\n2");
-        Library library = new Library(inputReader, outputWriter);
-        expectedOutputMessages.add(getWelcomeMessageOutput());
-        expectedOutputMessages.add(getExpectedMenuOptions());
-        expectedOutputMessages.add(getInvalidMenuOptionOutput());
-        expectedOutputMessages.add(getExpectedMenuOptions());
-        expectedOutputMessages.add(getQuitMenuOptionOutput());
-
-        library.startLibrary();
-
         assertEquals(expectedOutputMessages, outputWriter.getOutput());
-    }
-
-    private Output getInvalidMenuOptionOutput() {
-        return new Output("Select a valid option\n");
-    }
-
-    private Output getQuitMenuOptionOutput() {
-        return new Output("Thank you");
     }
 
 }

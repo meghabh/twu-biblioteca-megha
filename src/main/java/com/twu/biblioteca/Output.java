@@ -10,19 +10,15 @@ public class Output {
         this.outputMessages = outputMessages;
     }
 
-    public Output(String outputMessage){
+    public Output(String outputMessage) {
         outputMessages = new ArrayList<>();
         outputMessages.add(outputMessage);
-    }
-
-    public List<String> getOutputMessages() {
-        return outputMessages;
     }
 
     @Override
     public String toString() {
         String output = "";
-        for(String message : outputMessages)
+        for (String message : outputMessages)
             output += message;
         return output;
     }

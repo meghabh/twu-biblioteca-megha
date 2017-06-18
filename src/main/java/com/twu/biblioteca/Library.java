@@ -4,7 +4,6 @@ import com.twu.io.InputReader;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.MenuOptions;
 
-import java.util.List;
 import java.util.Map;
 
 public class Library {
@@ -34,15 +33,15 @@ public class Library {
             menu.displayMenuOptions();
             userInput = consoleInputReader.read();
             executeMenuOptionForUserInput(userInput);
-        } while (!userInput.equals("2"));
+        } while (!userInput.equals("3"));
     }
 
     private void executeMenuOptionForUserInput(String input) {
         MenuOptions menuOption;
-            menuOption = menu.getMenuOption(input);
-            Output output = menuOption.performAction(bookRepository);
+        menuOption = menu.getMenuOption(input);
+        Output output = menuOption.performAction(bookRepository, consoleInputReader);
         consoleOutputWriter.write(output);
-        }
+    }
 
 
     void startLibrary() {

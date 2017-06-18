@@ -12,6 +12,7 @@ public class ConsoleInputReader implements InputReader {
     public ConsoleInputReader(BufferedReader bufferedReader) {
         this.bufferedReader = bufferedReader;
     }
+
     public String read() {
         try {
             return bufferedReader.readLine();

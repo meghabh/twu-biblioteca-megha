@@ -2,10 +2,7 @@ package com.twu.biblioteca;
 
 
 import com.twu.io.OutputWriter;
-import com.twu.menuoptions.InvalidMenuOption;
-import com.twu.menuoptions.ListBook;
-import com.twu.menuoptions.MenuOptions;
-import com.twu.menuoptions.Quit;
+import com.twu.menuoptions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,14 +14,15 @@ public class Menu {
     private OutputWriter consoleOutputWriter;
 
     Menu(OutputWriter consoleOutputWriter) {
-        this.consoleOutputWriter=consoleOutputWriter;
+        this.consoleOutputWriter = consoleOutputWriter;
         menuOptions = new HashMap<>();
         options();
     }
 
     private void options() {
         menuOptions.put("1", new ListBook());
-        menuOptions.put("2", new Quit());
+        menuOptions.put("2", new CheckOutBook());
+        menuOptions.put("3", new Quit());
     }
 
     public MenuOptions getMenuOption(String userInput) {
@@ -36,7 +34,7 @@ public class Menu {
         List<String> menuOptionsList = new ArrayList<>();
         for (Map.Entry<String, MenuOptions> option : menuOptions.entrySet()) {
             menuOption = option.getValue();
-            menuOptionsList.add(option.getKey() + " " + menuOption.toString() + "\n");
+            menuOptionsList.add(option.getKey() + " " + menuOption.getOption() + "\n");
         }
         consoleOutputWriter.write(new Output(menuOptionsList));
     }

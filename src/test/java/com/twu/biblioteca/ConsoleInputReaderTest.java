@@ -11,7 +11,6 @@ import static org.junit.Assert.assertEquals;
 public class ConsoleInputReaderTest {
     @Test
     public void shouldReadFromConsole(){
-        //InputReader consoleInputReader;
         String input = "testing consoleInputReader";
         StringReader stringreader = new StringReader(input);
         ConsoleInputReader inputReader = new ConsoleInputReader(new
@@ -20,4 +19,5 @@ public class ConsoleInputReaderTest {
         assertEquals(input,inputReader.read());
 
     }
+
 }

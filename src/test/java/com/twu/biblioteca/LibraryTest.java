@@ -21,14 +21,6 @@ public class LibraryTest {
         return new Output(expectedOutputMessages);
     }
 
-    private Output getExpectedListOfBooks() {
-        ArrayList<String> expectedListOfBooks = new ArrayList<>();
-        expectedListOfBooks.add("Head First Java      | Kathy Sierra,Bert Bates   | 2015\n");
-        expectedListOfBooks.add("Native Son           | Richard Wrigh             | 1940\n");
-        expectedListOfBooks.add("Animal Farm          | George Orwell             | 1945\n");
-        return new Output(expectedListOfBooks);
-    }
-
     private Output getWelcomeMessageOutput() {
         return new Output("Welcome to library\n");
     }
@@ -41,11 +33,9 @@ public class LibraryTest {
     public void shouldDisplayListOfBooksWhenUserChoosesListBooks() {
         List<Output> expectedOutputMessages = new ArrayList<>();
         TestOutputWriter outputWriter = new TestOutputWriter();
-        TestInputReader inputReader = new TestInputReader("1\n4");
+        TestInputReader inputReader = new TestInputReader("4");
         Library library = new Library(inputReader, outputWriter);
         expectedOutputMessages.add(getWelcomeMessageOutput());
-        expectedOutputMessages.add(getExpectedMenuOptions());
-        expectedOutputMessages.add(getExpectedListOfBooks());
         expectedOutputMessages.add(getExpectedMenuOptions());
         expectedOutputMessages.add(getQuitMenuOptionOutput());
 

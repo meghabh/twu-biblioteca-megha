@@ -43,7 +43,6 @@ public class Library {
         consoleOutputWriter.write(output);
     }
 
-
     void startLibrary() {
         displayWelcomeMessage();
         displayMenu();

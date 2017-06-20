@@ -14,6 +14,6 @@ public class Biblioteca {
     public static void main(String[] args) {
         OutputWriter outputWriter = new ConsoleOutputWriter(new BufferedWriter(new OutputStreamWriter(System.out)));
         InputReader inputReader = new ConsoleInputReader(new BufferedReader(new InputStreamReader(System.in)));
-        new Library(inputReader, outputWriter).startLibrary();
+        new Library(inputReader, outputWriter).start();
     }
 }

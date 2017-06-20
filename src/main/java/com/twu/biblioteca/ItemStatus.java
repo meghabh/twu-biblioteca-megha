@@ -1,5 +1,5 @@
 package com.twu.biblioteca;
 
-public enum BookStatus {
+public enum ItemStatus {
     AVAILABLE, NOTAVAILABLE;
 }

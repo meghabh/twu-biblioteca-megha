@@ -1,9 +1,9 @@
 package com.twu.biblioteca;
 
 
-public class Book {
-    String title, author;
-    int yearOfPublication;
+public class Book implements Item {
+    private String title, author;
+    private int yearOfPublication;
 
     Book(String title, String author, int yearOfPublication) {
         this.title = title;
@@ -14,5 +14,10 @@ public class Book {
     @Override
     public String toString() {
         return String.format("%-20s | %-25s | %s", title, author, yearOfPublication);
+    }
+
+    @Override
+    public String getItemName() {
+        return title;
     }
 }

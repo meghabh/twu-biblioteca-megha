@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import com.twu.io.InputReader;
 import org.junit.Test;
 import com.twu.io.ConsoleInputReader;
 

@@ -7,18 +7,20 @@ import com.twu.menuoptions.MenuOptions;
 import java.util.Map;
 
 public class Library {
-    OutputWriter consoleOutputWriter;
-    InputReader consoleInputReader;
+    private OutputWriter consoleOutputWriter;
+    private InputReader consoleInputReader;
     private final String WELCOME_MESSAGE = "Welcome to library";
-    BookRepository bookRepository;
-    Menu menu;
+    private final String QUIT_OPTION = "6";
+    private Repository repository;
+    private LibraryItem libraryItem;
+    private Menu menu;
 
     Map<String, MenuOptions> options;
 
     Library(InputReader consoleInputReader, OutputWriter consoleOutputWriter) {
         this.consoleOutputWriter = consoleOutputWriter;
         this.consoleInputReader = consoleInputReader;
-        bookRepository = new BookRepository();
+        repository = new Repository();
         menu = new Menu(consoleOutputWriter);
     }
 
@@ -33,17 +35,17 @@ public class Library {
             menu.displayMenuOptions();
             userInput = consoleInputReader.read();
             executeMenuOptionForUserInput(userInput);
-        } while (!userInput.equals("4"));
+        } while (!userInput.equals(QUIT_OPTION));
     }
 
     private void executeMenuOptionForUserInput(String input) {
         MenuOptions menuOption;
         menuOption = menu.getMenuOption(input);
-        Output output = menuOption.performAction(bookRepository, consoleInputReader);
+        Output output = menuOption.performAction(consoleInputReader,repository);
         consoleOutputWriter.write(output);
     }
 
-    void startLibrary() {
+    void start() {
         displayWelcomeMessage();
         displayMenu();
     }

@@ -11,12 +11,12 @@ import static org.junit.Assert.assertEquals;
 public class InvalidMenuOptionTest {
     @Test
     public void shouldNotifyUserForInvalidOption() {
-        String invalidOption="15";
-        Output expectedOutputMessages=new Output("Select a valid option\n");
+        String invalidOption = "15";
+        Output expectedOutputMessages = new Output("Select a valid option\n");
         TestInputReader inputReader = new TestInputReader(invalidOption);
         InvalidMenuOption invalidMenuOption = new InvalidMenuOption();
-        Repository repository=new Repository();
-        Output actualOutput=invalidMenuOption.performAction(inputReader, repository);
+        Repository repository = new Repository();
+        Output actualOutput = invalidMenuOption.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);
 

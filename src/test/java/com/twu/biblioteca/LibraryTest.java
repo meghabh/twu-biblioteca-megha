@@ -25,6 +25,7 @@ public class LibraryTest {
     private Output getWelcomeMessageOutput() {
         return new Output("Welcome to library\n");
     }
+
     private Output getExpectedListOfBooks() {
         ArrayList<String> expectedListOfBooks = new ArrayList<>();
         expectedListOfBooks.add("Head First Java      | Kathy Sierra,Bert Bates   | 2015\n");
@@ -49,7 +50,6 @@ public class LibraryTest {
         expectedOutputMessages.add(getExpectedListOfBooks());
         expectedOutputMessages.add(getExpectedMenuOptions());
         expectedOutputMessages.add(getQuitMenuOptionOutput());
-
 
         library.start();
 

@@ -18,6 +18,7 @@ public class ListItemTest {
         expectedListOfBooks.add("Animal Farm          | George Orwell             | 1945\n");
         return new Output(expectedListOfBooks);
     }
+
     private Output getExpectedListOfMovies() {
         ArrayList<String> expectedlistofMovies = new ArrayList<>();
         expectedlistofMovies.add("AirLift              | 2016     | Raja Krishna Menon   | 4.0\n");
@@ -29,23 +30,24 @@ public class ListItemTest {
 
     @Test
     public void shouldDisplayListOfBooksWhenUserChoosesListBooks() {
-        String listBookOption="1";
+        String listBookOption = "1";
         TestInputReader inputReader = new TestInputReader(listBookOption);
         Repository repository = new Repository();
-        ListItems listitem = new ListItems("Book");
-        Output expectedOutputMessages=getExpectedListOfBooks();
-        Output actualOutput=listitem.performAction(inputReader, repository);
+        ListItems listItems = new ListItems("Book");
+        Output expectedOutputMessages = getExpectedListOfBooks();
+        Output actualOutput = listItems.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);
     }
+
     @Test
-    public void shouldDisplayListOfBooksWhenUserChoosesListMovies(){
-        String listBookOption="2";
+    public void shouldDisplayListOfBooksWhenUserChoosesListMovies() {
+        String listBookOption = "2";
         TestInputReader inputReader = new TestInputReader(listBookOption);
         Repository repository = new Repository();
         ListItems listitem = new ListItems("Movie");
-        Output expectedOutputMessages=getExpectedListOfMovies();
-        Output actualOutput=listitem.performAction(inputReader, repository);
+        Output expectedOutputMessages = getExpectedListOfMovies();
+        Output actualOutput = listitem.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);
 

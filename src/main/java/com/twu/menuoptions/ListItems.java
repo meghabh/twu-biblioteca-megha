@@ -11,6 +11,7 @@ public class ListItems implements MenuOptions {
     String type;
     private List<Item> items;
     private Repository repository;
+
     public ListItems(String type) {
         this.type = type;
         items = new ArrayList<>();

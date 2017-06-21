@@ -25,7 +25,7 @@ public class Repository {
     public List<Item> getItems(String type) {
         List<Item> items = new ArrayList<>();
         for (LibraryItem item : availableItems) {
-            if (item.type == type)
+            if (item.type.equals(type))
                 items.add(item.getItem());
         }
         return items;
@@ -34,7 +34,7 @@ public class Repository {
 
     public String checkoutItem(String itemName, String type, User user) {
         for (LibraryItem item : availableItems) {
-            if (item.getItem().getItemName().equals(itemName) && item.type == type) {
+            if (item.getItem().getItemName().equals(itemName) && item.type.equals(type)) {
                 checkedOutItems.put(item, user);
                 availableItems.remove(item);
                 return "Thank you! Enjoy the " + type.toLowerCase() + "\n";
@@ -47,7 +47,7 @@ public class Repository {
     public String returnItem(String bookName, String type, User user) {
         for (Map.Entry<LibraryItem, User> libraryItem : checkedOutItems.entrySet()) {
             Item item = libraryItem.getKey().getItem();
-            if (item.getItemName().equals(bookName) && libraryItem.getKey().type == type) {
+            if (item.getItemName().equals(bookName) && libraryItem.getKey().type.equals(type)) {
                 return "Thank you for returning the " + type.toLowerCase() + "\n";
             }
         }

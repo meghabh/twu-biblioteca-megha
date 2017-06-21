@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class ConsoleOutputWriterTest {
 
     @Test
-    public void shouldWriteToconsole() {
+    public void shouldWriteToConsole() {
         String input = "testing consoleOutputWriter";
         String expectedOutput = "testing consoleOutputWriter";
         StringWriter stringWriter = new StringWriter();

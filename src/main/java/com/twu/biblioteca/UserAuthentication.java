@@ -4,9 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class UserAuthentication {
+    public static final String LOGIN_SUCCESSFUL = "Login successful\n";
+    public static final String LOGIN_UNSUCCESSFUL="Login unSuccessful\n";
     private Map<User, Password> credentials;
 
-    UserAuthentication() {
+    public UserAuthentication() {
         credentials = new HashMap<>();
         addUsers();
     }
@@ -16,13 +18,14 @@ public class UserAuthentication {
         credentials.put(new User("Rina", "rina@gmail.com", "Mysore", "+91-9867876543", "123-1235"), new Password("Rina@Mysore"));
     }
 
-    public User validateCredentials(String userLibraryNumber, String password) {
+    public String validateCredentials(String userLibraryNumber, String password) {
         for (Map.Entry<User, Password> credential : credentials.entrySet()) {
-            if (credential.getKey().libraryNumber == userLibraryNumber && credential.getValue().password == password) {
-                return credential.getKey();
+            if (credential.getKey().libraryNumber.equals(userLibraryNumber) && credential.getValue().password.equals(password)) {
+                //Set User
+                return LOGIN_SUCCESSFUL;
             }
         }
-        return null;
+        return LOGIN_UNSUCCESSFUL;
 
     }
 }

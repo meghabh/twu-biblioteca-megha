@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-
 public class Book implements Item {
     private String title, author;
     private int yearOfPublication;
@@ -21,3 +20,4 @@ public class Book implements Item {
         return title;
     }
 }
+

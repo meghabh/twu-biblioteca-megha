@@ -34,15 +34,13 @@ public class ReturnItemTest {
         TestInputReader inputReader = new TestInputReader("Native");
         Repository repository = new Repository();
         ReturnItem returnItem = new ReturnItem("Movie");
-        Output expectedOutputMessages=new Output("That is not a valid movie to return\n");
+        Output expectedOutputMessages = new Output("That is not a valid movie to return\n");
 
-        Output actualOutput= returnItem.performAction(inputReader, repository);
+        Output actualOutput = returnItem.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);
 
     }
-
-
 
 
 }

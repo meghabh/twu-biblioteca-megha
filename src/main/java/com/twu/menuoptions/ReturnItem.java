@@ -16,7 +16,7 @@ public class ReturnItem implements MenuOptions {
     @Override
     public Output performAction(InputReader consoleInputReader, Repository repository) {
         String userInput = consoleInputReader.read();
-        String message = repository.returnItem(userInput,type,user);
+        String message = repository.returnItem(userInput, type, user);
         return new Output(message);
     }
 

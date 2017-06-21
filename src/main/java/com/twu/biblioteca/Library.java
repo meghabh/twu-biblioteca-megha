@@ -13,7 +13,7 @@ public class Library {
     private final String QUIT_OPTION = "6";
     private Repository repository;
     private LibraryItem libraryItem;
-    private Menu menu;
+    private CustomerMenu customerMenu;
 
     Map<String, MenuOptions> options;
 
@@ -21,7 +21,7 @@ public class Library {
         this.consoleOutputWriter = consoleOutputWriter;
         this.consoleInputReader = consoleInputReader;
         repository = new Repository();
-        menu = new Menu(consoleOutputWriter);
+        customerMenu = new CustomerMenu(consoleOutputWriter);
     }
 
     private void displayWelcomeMessage() {
@@ -32,7 +32,7 @@ public class Library {
     private void displayMenu() {
         String userInput;
         do {
-            menu.displayMenuOptions();
+            customerMenu.displayMenuOptions();
             userInput = consoleInputReader.read();
             executeMenuOptionForUserInput(userInput);
         } while (!userInput.equals(QUIT_OPTION));
@@ -40,8 +40,8 @@ public class Library {
 
     private void executeMenuOptionForUserInput(String input) {
         MenuOptions menuOption;
-        menuOption = menu.getMenuOption(input);
-        Output output = menuOption.performAction(consoleInputReader,repository);
+        menuOption = customerMenu.getMenuOption(input);
+        Output output = menuOption.performAction(consoleInputReader, repository);
         consoleOutputWriter.write(output);
     }
 

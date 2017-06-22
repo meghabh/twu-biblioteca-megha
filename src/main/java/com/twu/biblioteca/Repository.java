@@ -4,7 +4,7 @@ import java.util.*;
 
 
 public class Repository {
-    private Map<LibraryItem, User> checkedOutItems;
+    private Map<LibraryItem, String> checkedOutItems;
     private List<LibraryItem> availableItems;
 
 
@@ -30,12 +30,20 @@ public class Repository {
         }
         return items;
     }
+    public List<Item> getCheckedOutItems(String type){
+        List<Item> items = new ArrayList<>();
+        for (Map.Entry<LibraryItem, String> libraryItem : checkedOutItems.entrySet()) {
+            if(libraryItem.getKey().type.equals(type))
+            items.add(libraryItem.getKey().getItem());
+        }
+        return items;
+    }
 
-
-    public String checkoutItem(String itemName, String type, User user) {
+    public String checkoutItem(String itemName, String type) {
         for (LibraryItem item : availableItems) {
             if (item.getItem().getItemName().equals(itemName) && item.type.equals(type)) {
-                checkedOutItems.put(item, user);
+                //System.out.println(Session.getUser());
+                checkedOutItems.put(item, Session.getUser().getLibraryNumber());
                 availableItems.remove(item);
                 return "Thank you! Enjoy the " + type.toLowerCase() + "\n";
             }
@@ -44,8 +52,8 @@ public class Repository {
     }
 
 
-    public String returnItem(String bookName, String type, User user) {
-        for (Map.Entry<LibraryItem, User> libraryItem : checkedOutItems.entrySet()) {
+    public String returnItem(String bookName, String type) {
+        for (Map.Entry<LibraryItem, String> libraryItem : checkedOutItems.entrySet()) {
             Item item = libraryItem.getKey().getItem();
             if (item.getItemName().equals(bookName) && libraryItem.getKey().type.equals(type)) {
                 return "Thank you for returning the " + type.toLowerCase() + "\n";

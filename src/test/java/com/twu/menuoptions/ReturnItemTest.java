@@ -3,6 +3,8 @@ package com.twu.menuoptions;
 
 import com.twu.biblioteca.Repository;
 import com.twu.biblioteca.Output;
+import com.twu.biblioteca.Session;
+import com.twu.biblioteca.User;
 import com.twu.models.TestInputReader;
 import org.junit.Test;
 
@@ -15,6 +17,8 @@ public class ReturnItemTest {
     public void shouldNotifyCustomerForSuccessfulBookReturn() {
         ArrayList<Output> expectedOutputMessages = new ArrayList<>();
         ArrayList<Output> actualOutputMessages = new ArrayList<>();
+        User user=new User("Bob", "bob@gmail.com", "Bangalore", "+91-9867453565", "123-1234");
+        Session.setUser(user);
         TestInputReader inputReader1 = new TestInputReader("Native Son");
         TestInputReader inputReader2 = new TestInputReader("Native Son");
         Repository repository = new Repository();
@@ -25,7 +29,7 @@ public class ReturnItemTest {
 
         actualOutputMessages.add(checkOutItem.performAction(inputReader1, repository));
         actualOutputMessages.add(returnItem.performAction(inputReader2, repository));
-
+        Session.setUser(null);
         assertEquals(expectedOutputMessages, actualOutputMessages);
     }
 

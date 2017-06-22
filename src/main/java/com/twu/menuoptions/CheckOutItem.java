@@ -17,7 +17,8 @@ public class CheckOutItem implements MenuOptions {
     @Override
     public Output performAction(InputReader consoleInputReader, Repository repository) {
         String userInput = consoleInputReader.read();
-        String message = repository.checkoutItem(userInput, type, user);
+
+        String message = repository.checkoutItem(userInput, type);
         return new Output(message);
 
     }

@@ -4,24 +4,24 @@ import com.twu.io.InputReader;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.MenuOptions;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Library {
     private OutputWriter consoleOutputWriter;
     private InputReader consoleInputReader;
     private final String WELCOME_MESSAGE = "Welcome to library";
-    private final String QUIT_OPTION = "6";
+    private final String QUIT_OPTION = "q";
     private Repository repository;
-    private LibraryItem libraryItem;
-    private CustomerMenu customerMenu;
 
-    Map<String, MenuOptions> options;
+    Map<String, Menu> menumap;
 
     Library(InputReader consoleInputReader, OutputWriter consoleOutputWriter) {
         this.consoleOutputWriter = consoleOutputWriter;
         this.consoleInputReader = consoleInputReader;
         repository = new Repository();
-        customerMenu = new CustomerMenu(consoleOutputWriter);
+        menumap = new HashMap<>();
+        generateMenu();
     }
 
     private void displayWelcomeMessage() {
@@ -29,10 +29,16 @@ public class Library {
 
     }
 
+    private void generateMenu() {
+        menumap.put("mainMenu", new MainMenu(consoleOutputWriter));
+        menumap.put("customerMenu", new CustomerMenu(consoleOutputWriter));
+        menumap.put("librarianMenu", new LibrarianMenu(consoleOutputWriter));
+    }
+
     private void displayMenu() {
         String userInput;
         do {
-            customerMenu.displayMenuOptions();
+            menumap.get(Session.getType()).displayMenuOptions();
             userInput = consoleInputReader.read();
             executeMenuOptionForUserInput(userInput);
         } while (!userInput.equals(QUIT_OPTION));
@@ -40,7 +46,7 @@ public class Library {
 
     private void executeMenuOptionForUserInput(String input) {
         MenuOptions menuOption;
-        menuOption = customerMenu.getMenuOption(input);
+        menuOption = menumap.get(Session.getType()).getMenuOption(input);
         Output output = menuOption.performAction(consoleInputReader, repository);
         consoleOutputWriter.write(output);
     }

@@ -12,6 +12,7 @@ public class CustomerLoginTest {
     public void shouldValidateUserCredentials(){
         TestInputReader inputReader = new TestInputReader("123-1234\nBob@123");
         CustomerLogin customerLogin=new CustomerLogin();
+
         Output expectedOutputMessages = new Output("Login successful\n");
 
         Output actualOutput = customerLogin.performAction(inputReader,null);

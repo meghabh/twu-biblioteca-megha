@@ -9,10 +9,10 @@ public class LibrarianAuthenticationTest {
     @Test
     public void shouldAuthenticateLibrarianWithValidCredentials() {
         LibrarianAuthentication librarianAuthentication=new LibrarianAuthentication();
-        Librarian expectedLibrarian = new Librarian("Ram","123-1236");
+        Output expectedOutput=new Output("Login successful\n");
 
-        Librarian librarian = librarianAuthentication.validateCredentials("123-1236", "Ram@123");
+        String message= librarianAuthentication.validateCredentials("123-1236", "Ram@123");
 
-        assertEquals(expectedLibrarian,librarian);
+        assertEquals(expectedOutput,message);
     }
 }

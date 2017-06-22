@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class UserAuthentication {
     public static final String LOGIN_SUCCESSFUL = "Login successful\n";
-    public static final String LOGIN_UNSUCCESSFUL="Login unSuccessful\n";
+    public static final String LOGIN_UNSUCCESSFUL="Failed to login\n";
     private Map<User, Password> credentials;
 
     public UserAuthentication() {
@@ -21,7 +21,8 @@ public class UserAuthentication {
     public String validateCredentials(String userLibraryNumber, String password) {
         for (Map.Entry<User, Password> credential : credentials.entrySet()) {
             if (credential.getKey().libraryNumber.equals(userLibraryNumber) && credential.getValue().password.equals(password)) {
-                //Set User
+                Session.setType("customerMenu");
+                Session.setUser(credential.getKey());
                 return LOGIN_SUCCESSFUL;
             }
         }

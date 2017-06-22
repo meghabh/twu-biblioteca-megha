@@ -4,6 +4,10 @@ package com.twu.biblioteca;
 public class User {
     String userName, email, address, phoneNumber, libraryNumber;
 
+    public String getLibraryNumber() {
+        return libraryNumber;
+    }
+
     public User(String name, String email, String address, String phoneNumber, String libraryNumber) {
         this.userName = name;
         this.email = email;

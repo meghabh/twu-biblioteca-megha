@@ -11,7 +11,7 @@ import static org.junit.Assert.assertEquals;
 public class QuitOptionTest {
     @Test
     public void applicationShouldStopWhenUserChoosesQuitOption() {
-        String quit = "5";
+        String quit = "q";
         TestInputReader inputReader = new TestInputReader(quit);
         Quit quitOption = new Quit();
         Output expectedOutputMessages = new Output("Thank you");

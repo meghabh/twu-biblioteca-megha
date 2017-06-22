@@ -20,10 +20,10 @@ public class ListItemTest {
     }
 
     private Output getExpectedListOfMovies() {
-        ArrayList<String> expectedlistofMovies = new ArrayList<>();
-        expectedlistofMovies.add("AirLift              | 2016     | Raja Krishna Menon   | 4.0\n");
-        expectedlistofMovies.add("Doctor Strange       | 2016     | Scott Decrrickson    | 5.0\n");
-        return new Output(expectedlistofMovies);
+        ArrayList<String> expectedlistOfMovies = new ArrayList<>();
+        expectedlistOfMovies.add("AirLift              | 2016     | Raja Krishna Menon   | 4.0\n");
+        expectedlistOfMovies.add("Doctor Strange       | 2016     | Scott Decrrickson    | 5.0\n");
+        return new Output(expectedlistOfMovies);
 
 
     }

@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menumodels;
 
+import com.twu.biblioteca.UserAuthentication;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.*;
 
@@ -8,31 +9,36 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class LibrarianMenu extends Menu {
+public class MainMenu extends Menu {
     private Map<String, MenuOptions> menuOptions;
     private OutputWriter consoleOutputWriter;
-    Repository repository;
+    private UserAuthentication userAuthentication;
     private List<String> options;
 
-    public LibrarianMenu(OutputWriter consoleOutputWriter) {
-        super(consoleOutputWriter);
+    public MainMenu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
+        super(consoleOutputWriter,userAuthentication );
         this.consoleOutputWriter = consoleOutputWriter;
         menuOptions = new LinkedHashMap<>();
+        this.userAuthentication=userAuthentication;
         options = new ArrayList<>();
         options();
         addOptions();
     }
 
     private void options() {
-        menuOptions.put("1", new CheckedOutItems("Book"));
-        menuOptions.put("2", new CheckedOutItems("Movie"));
-        menuOptions.put("3", new Logout());
+        menuOptions.put("1", new ListItems("Book"));
+        menuOptions.put("2", new ListItems("Movie"));
+        menuOptions.put("3", new Login(userAuthentication));
+        menuOptions.put("q", new Quit());
+
     }
 
     private void addOptions() {
-        options.add("1 List CheckedOutBooks\n");
-        options.add("2 List CheckedOutMovies\n");
-        options.add("3 Logout\n");
+        options.add("1 List Books\n");
+        options.add("2 List Movies\n");
+        options.add("3 Login\n");
+        options.add("q Quit\n");
+
     }
 
     public MenuOptions getMenuOption(String userInput) {
@@ -44,7 +50,4 @@ public class LibrarianMenu extends Menu {
         super.displayMenuOptions(options);
     }
 
-
 }
-
-

@@ -2,12 +2,10 @@ package com.twu.menuoptions;
 
 import com.twu.biblioteca.Repository;
 import com.twu.biblioteca.Output;
-import com.twu.biblioteca.User;
 import com.twu.io.InputReader;
 
 public class ReturnItem implements MenuOptions {
-    String type;
-    User user;
+    private String type;
 
     public ReturnItem(String type) {
         this.type = type;

@@ -1,7 +1,8 @@
-package com.twu.menuoptions;
+package com.twu.biblioteca.menumodels;
 
-import com.twu.biblioteca.CustomerMenu;
-import com.twu.biblioteca.Menu;
+import com.twu.biblioteca.UserAuthentication;
+import com.twu.biblioteca.menumodels.CustomerMenu;
+import com.twu.biblioteca.menumodels.Menu;
 import com.twu.biblioteca.Output;
 import com.twu.models.TestOutputWriter;
 import org.junit.Test;
@@ -29,7 +30,9 @@ public class MenuTest {
         List<Output> expectedOutputMessage=new ArrayList<>();
         TestOutputWriter testOutputWriter = new TestOutputWriter();
         expectedOutputMessage.add(getExpectedMenuList());
-        Menu menu = new CustomerMenu(testOutputWriter);
+        UserAuthentication userAuthentication=new UserAuthentication();
+        Menu menu = new CustomerMenu(testOutputWriter,userAuthentication );
+
         menu.displayMenuOptions();
 
         assertEquals(expectedOutputMessage,testOutputWriter.getOutput());

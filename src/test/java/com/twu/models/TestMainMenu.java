@@ -6,9 +6,9 @@ import com.twu.biblioteca.menumodels.CustomerMenu;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.MenuOptions;
 
-public class TestCustomerMenu extends CustomerMenu {
+public class TestMainMenu extends CustomerMenu {
     boolean flag;
-    public TestCustomerMenu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
+    public TestMainMenu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
         super(consoleOutputWriter, userAuthentication);
     }
 

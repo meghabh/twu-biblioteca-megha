@@ -9,6 +9,7 @@ public class UserAuthenticationTest {
     public void shouldAuthenticateUserCredentials() {
         UserAuthentication userAuthentication = new UserAuthentication();
         Output expectedOutput=new Output("Login successful\n");
+
         String message = userAuthentication.validateCredentials("123-1234", "Bob@123");
 
         assertEquals(expectedOutput, message);
@@ -17,6 +18,7 @@ public class UserAuthenticationTest {
     public void shouldDisplayFailedMessageForInValidateUserCredentials() {
         UserAuthentication userAuthentication = new UserAuthentication();
         Output expectedOutput=new Output("Failed to login\n");
+
         String message = userAuthentication.validateCredentials("123-1234", "Bob@12");
 
         assertEquals(expectedOutput, message);

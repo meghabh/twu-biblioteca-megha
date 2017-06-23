@@ -1,4 +1,4 @@
-package com.twu.biblioteca;
+package com.twu.io;
 
 import org.junit.Test;
 import com.twu.io.ConsoleInputReader;

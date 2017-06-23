@@ -1,5 +1,7 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menumodels;
 
+import com.twu.biblioteca.Output;
+import com.twu.biblioteca.UserAuthentication;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.InvalidMenuOption;
 import com.twu.menuoptions.MenuOptions;
@@ -12,12 +14,15 @@ import java.util.Map;
 public abstract class Menu {
     private Map<String, MenuOptions> menuOptions;
     private OutputWriter consoleOutputWriter;
+    private UserAuthentication userAuthentication;
     private List<String> options;
 
-    public Menu(OutputWriter consoleOutputWriter) {
+    public Menu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
         this.consoleOutputWriter = consoleOutputWriter;
         menuOptions = new LinkedHashMap<>();
         options = new ArrayList<>();
+        this.userAuthentication=userAuthentication;
+
     }
 
     public abstract MenuOptions getMenuOption(String userInput);
@@ -28,7 +33,7 @@ public abstract class Menu {
         return menuOptions.getOrDefault(userInput, new InvalidMenuOption());
     }
 
-    void  displayMenuOptions(List<String> options) {
+    public void  displayMenuOptions(List<String> options) {
         consoleOutputWriter.write(new Output(options));
     }
 

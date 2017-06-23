@@ -1,5 +1,10 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.libraryitems.Book;
+import com.twu.biblioteca.libraryitems.Item;
+import com.twu.biblioteca.libraryitems.LibraryItem;
+import com.twu.biblioteca.libraryitems.Movie;
+
 import java.util.*;
 
 
@@ -25,25 +30,26 @@ public class Repository {
     public List<Item> getItems(String type) {
         List<Item> items = new ArrayList<>();
         for (LibraryItem item : availableItems) {
-            if (item.type.equals(type))
+            if (item.getType().equals(type))
                 items.add(item.getItem());
         }
         return items;
     }
-    public List<Item> getCheckedOutItems(String type){
-        List<Item> items = new ArrayList<>();
+
+    public List<String> getCheckedOutItems(String type) {
+        List<String> items = new ArrayList<>();
         for (Map.Entry<LibraryItem, String> libraryItem : checkedOutItems.entrySet()) {
-            if(libraryItem.getKey().type.equals(type))
-            items.add(libraryItem.getKey().getItem());
+            if (libraryItem.getKey().getType().equals(type))
+                items.add(libraryItem.getKey().getItem() + " id = " + libraryItem.getValue() + "\n");
         }
         return items;
     }
 
-    public String checkoutItem(String itemName, String type) {
+    public String checkoutItem(String itemName, String type, UserAuthentication userAuthentication) {
         for (LibraryItem item : availableItems) {
-            if (item.getItem().getItemName().equals(itemName) && item.type.equals(type)) {
-                //System.out.println(Session.getUser());
-                checkedOutItems.put(item, Session.getUser().getLibraryNumber());
+            if (item.getItem().getItemName().equals(itemName) && item.getType().equals(type)) {
+                checkedOutItems.put(item, userAuthentication.getUser().getLibraryNumber());
+                System.out.println(userAuthentication.getUser().getLibraryNumber());
                 availableItems.remove(item);
                 return "Thank you! Enjoy the " + type.toLowerCase() + "\n";
             }
@@ -55,7 +61,7 @@ public class Repository {
     public String returnItem(String bookName, String type) {
         for (Map.Entry<LibraryItem, String> libraryItem : checkedOutItems.entrySet()) {
             Item item = libraryItem.getKey().getItem();
-            if (item.getItemName().equals(bookName) && libraryItem.getKey().type.equals(type)) {
+            if (item.getItemName().equals(bookName) && libraryItem.getKey().getType().equals(type)) {
                 return "Thank you for returning the " + type.toLowerCase() + "\n";
             }
         }

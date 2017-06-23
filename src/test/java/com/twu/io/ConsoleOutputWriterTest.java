@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.io;
 
+import com.twu.biblioteca.Output;
 import com.twu.io.ConsoleOutputWriter;
 import org.junit.Test;
 

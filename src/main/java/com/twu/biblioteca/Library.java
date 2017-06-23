@@ -1,11 +1,9 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.menumodels.*;
 import com.twu.io.InputReader;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.MenuOptions;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class Library {
     private OutputWriter consoleOutputWriter;
@@ -13,15 +11,15 @@ public class Library {
     private final String WELCOME_MESSAGE = "Welcome to library";
     private final String QUIT_OPTION = "q";
     private Repository repository;
+    private UserAuthentication userAuthentication;
+    private MenuGenerator menuGenerator;
 
-    Map<String, Menu> menumap;
-
-    Library(InputReader consoleInputReader, OutputWriter consoleOutputWriter) {
+    Library(InputReader consoleInputReader, OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
         this.consoleOutputWriter = consoleOutputWriter;
         this.consoleInputReader = consoleInputReader;
+        this.userAuthentication = userAuthentication;
+        menuGenerator = new MenuGenerator(consoleOutputWriter, userAuthentication);
         repository = new Repository();
-        menumap = new HashMap<>();
-        generateMenu();
     }
 
     private void displayWelcomeMessage() {
@@ -29,24 +27,19 @@ public class Library {
 
     }
 
-    private void generateMenu() {
-        menumap.put("mainMenu", new MainMenu(consoleOutputWriter));
-        menumap.put("customerMenu", new CustomerMenu(consoleOutputWriter));
-        menumap.put("librarianMenu", new LibrarianMenu(consoleOutputWriter));
-    }
-
     private void displayMenu() {
         String userInput;
         do {
-            menumap.get(Session.getType()).displayMenuOptions();
+            Menu menu = menuGenerator.customizeMenu();
+            menu.displayMenuOptions();
             userInput = consoleInputReader.read();
-            executeMenuOptionForUserInput(userInput);
+            executeMenuOptionForUserInput(userInput, menu);
         } while (!userInput.equals(QUIT_OPTION));
     }
 
-    private void executeMenuOptionForUserInput(String input) {
+    private void executeMenuOptionForUserInput(String input, Menu menu) {
         MenuOptions menuOption;
-        menuOption = menumap.get(Session.getType()).getMenuOption(input);
+        menuOption = menu.getMenuOption(input);
         Output output = menuOption.performAction(consoleInputReader, repository);
         consoleOutputWriter.write(output);
     }

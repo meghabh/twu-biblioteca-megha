@@ -6,9 +6,9 @@ import com.twu.biblioteca.menumodels.CustomerMenu;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.MenuOptions;
 
-public class TestCustomerMenu extends CustomerMenu {
+public class TestLibrarianMenu extends CustomerMenu {
     boolean flag;
-    public TestCustomerMenu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
+    public TestLibrarianMenu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
         super(consoleOutputWriter, userAuthentication);
     }
 
@@ -28,3 +28,4 @@ public class TestCustomerMenu extends CustomerMenu {
         return flag;
     }
 }
+

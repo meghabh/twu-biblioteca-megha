@@ -1,5 +1,6 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.menumodels;
 
+import com.twu.biblioteca.UserAuthentication;
 import com.twu.io.OutputWriter;
 import com.twu.menuoptions.*;
 
@@ -8,14 +9,16 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-public class MainMenu extends Menu {
+public class LibrarianMenu extends Menu {
     private Map<String, MenuOptions> menuOptions;
     private OutputWriter consoleOutputWriter;
+    private UserAuthentication userAuthentication;
     private List<String> options;
 
-    public MainMenu(OutputWriter consoleOutputWriter) {
-        super(consoleOutputWriter);
+    public LibrarianMenu(OutputWriter consoleOutputWriter, UserAuthentication userAuthentication) {
+        super(consoleOutputWriter,userAuthentication );
         this.consoleOutputWriter = consoleOutputWriter;
+        this.userAuthentication=userAuthentication;
         menuOptions = new LinkedHashMap<>();
         options = new ArrayList<>();
         options();
@@ -23,21 +26,15 @@ public class MainMenu extends Menu {
     }
 
     private void options() {
-        menuOptions.put("1", new ListItems("Book"));
-        menuOptions.put("2", new ListItems("Movie"));
-        menuOptions.put("3", new CustomerLogin());
-        menuOptions.put("4", new LibrarianLogin());
-        menuOptions.put("q", new Quit());
-
+        menuOptions.put("1", new CheckedOutItems("Book",userAuthentication ));
+        menuOptions.put("2", new CheckedOutItems("Movie",userAuthentication ));
+        menuOptions.put("3", new Logout(userAuthentication));
     }
 
     private void addOptions() {
-        options.add("1 List Books\n");
-        options.add("2 List Movies\n");
-        options.add("3 Customer Login\n");
-        options.add("4 Librarian Login\n");
-        options.add("q Quit\n");
-
+        options.add("1 List CheckedOutBooks\n");
+        options.add("2 List CheckedOutMovies\n");
+        options.add("3 Logout\n");
     }
 
     public MenuOptions getMenuOption(String userInput) {
@@ -49,4 +46,7 @@ public class MainMenu extends Menu {
         super.displayMenuOptions(options);
     }
 
+
 }
+
+

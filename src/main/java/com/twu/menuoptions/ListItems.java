@@ -2,13 +2,14 @@ package com.twu.menuoptions;
 
 
 import com.twu.biblioteca.*;
+import com.twu.biblioteca.libraryitems.Item;
 import com.twu.io.InputReader;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ListItems implements MenuOptions {
-    String type;
+    private String type;
     private List<Item> items;
     private Repository repository;
 

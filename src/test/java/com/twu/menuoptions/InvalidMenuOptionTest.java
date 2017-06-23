@@ -16,6 +16,7 @@ public class InvalidMenuOptionTest {
         TestInputReader inputReader = new TestInputReader(invalidOption);
         InvalidMenuOption invalidMenuOption = new InvalidMenuOption();
         Repository repository = new Repository();
+
         Output actualOutput = invalidMenuOption.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);

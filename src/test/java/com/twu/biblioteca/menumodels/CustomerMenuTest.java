@@ -1,6 +1,7 @@
-package com.twu.menuoptions;
+package com.twu.biblioteca.menumodels;
 
 
+import com.twu.biblioteca.UserAuthentication;
 import com.twu.models.TestCustomerMenu;
 import com.twu.models.TestOutputWriter;
 import org.junit.Test;
@@ -11,11 +12,12 @@ public class CustomerMenuTest {
     @Test
     public void shouldDisplayMethod(){
         TestOutputWriter outputWriter=new TestOutputWriter();
-        TestCustomerMenu testCustomerMenu=new TestCustomerMenu(outputWriter);
+        UserAuthentication userAuthentication=new UserAuthentication();
+        TestCustomerMenu testCustomerMenu=new TestCustomerMenu(outputWriter,userAuthentication);
 
         testCustomerMenu.displayMenuOptions();
+        testCustomerMenu.getMenuOption(null);
 
         assertEquals(true,testCustomerMenu.isSuperCalled());
     }
-
 }

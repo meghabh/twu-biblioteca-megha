@@ -1,11 +1,11 @@
-package com.twu.biblioteca;
+package com.twu.biblioteca.libraryitems;
 
 
 public class LibraryItem {
-    Item item;
-    String type;
+    private Item item;
+    private String type;
 
-    LibraryItem(Item item, String type) {
+    public LibraryItem(Item item, String type) {
         this.item = item;
         this.type = type;
     }

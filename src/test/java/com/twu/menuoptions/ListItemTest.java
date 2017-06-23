@@ -35,6 +35,7 @@ public class ListItemTest {
         Repository repository = new Repository();
         ListItems listItems = new ListItems("Book");
         Output expectedOutputMessages = getExpectedListOfBooks();
+
         Output actualOutput = listItems.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);
@@ -45,9 +46,10 @@ public class ListItemTest {
         String listBookOption = "2";
         TestInputReader inputReader = new TestInputReader(listBookOption);
         Repository repository = new Repository();
-        ListItems listitem = new ListItems("Movie");
+        ListItems listItem = new ListItems("Movie");
         Output expectedOutputMessages = getExpectedListOfMovies();
-        Output actualOutput = listitem.performAction(inputReader, repository);
+
+        Output actualOutput = listItem.performAction(inputReader, repository);
 
         assertEquals(expectedOutputMessages, actualOutput);
 
